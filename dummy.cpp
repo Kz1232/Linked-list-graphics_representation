@@ -2,14 +2,15 @@
 #include <conio.h>
 #include <graphics.h>
 
-void displayInputInRectangle(int i) {
+void displayInputInRectangle(int i,const std::string userInput) {
 
     // Rectangle coordinates
     int left =i;
     int top = 100;
     int right = i+90;
     int bottom = 150;
-
+// line creator
+    line(i+90,125,i+90+20,125);
 //    int left =x;
 //    int top = 100;
 //    int right = x+d;
@@ -19,9 +20,9 @@ void displayInputInRectangle(int i) {
     rectangle(left, top, right, bottom);
 
     // Get user input
-    std::string userInput;
-    std::cout << "Enter text to display inside the rectangle: ";
-    std::getline(std::cin, userInput);
+//    std::string userInput;
+//    std::cout << "Enter text to display inside the rectangle: ";
+//    std::getline(std::cin, userInput);
 
     // Calculate text position to center it inside the rectangle
 //    int textWidth = textwidth(userInput.c_str());
@@ -41,16 +42,19 @@ void displayInputInRectangle(int i) {
 int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
+     std::string userInput;
+
 //    displayInputInRectangle(1,1);
 //    displayInputInRectangle(2,2);
 int x=110,i=0;
+// yaha loop ma 3 value rakhnu ko khas meaning kehi testo xaina hae
 while(i<3)
 {
-    displayInputInRectangle(x);
+    std::cout << "Enter text to display inside the rectangle: ";
+    std::getline(std::cin, userInput);
+    displayInputInRectangle(x,userInput);
     x=x+110;
     i++;
-
-
 }
     closegraph();
     return 0;
