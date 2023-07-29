@@ -1,22 +1,54 @@
 #include <iostream>
 #include <conio.h>
+#include<stdlib.h>
+#include<cstdio>
+#include<windows.h>
 #include <graphics.h>
+using namespace std;
+struct node{
+    int info;
+    struct node *next;
+};
+struct node *pfirst=NULL;
+void insertatend( int va)
+{
+	struct node* pthis;
+	//count++;
+    struct node* pnew=(struct node*)malloc(sizeof(struct node));
+    pnew->info=va;
+    if(pfirst==NULL)
+    {
+        std::cout<<"\nThe list is empty so first node is created succesfully";
+        pnew->next=NULL;
+        pfirst=pnew;
+   }
+    else
+    {
+        pthis=pfirst;
+        while(pthis->next!=NULL)
+        {
+            pthis=pthis->next;
+        }
+        pthis->next=pnew;
+        pnew->next=NULL;
+        cout<<"\nNew node addition successfull";
+    }
+}
+// drawing part here
+void displayInputInRectangle(int i,int userInput) {
 
-void displayInputInRectangle(int i,const std::string userInput) {
-
-    // Rectangle coordinates
+// Rectangle coordinates
     int left =i;
     int top = 100;
     int right = i+90;
     int bottom = 150;
-// line creator
-    line(i+90,125,i+90+20,125);
-//    int left =x;
-//    int top = 100;
-//    int right = x+d;
-//    int bottom = 150;
+//Box line
+int c=(left+right)/2;
+line(c,100,c,150);
 
-        // Draw the rectangle
+// conncting line creator
+    line(i+90,125,i+90+20,125);
+// Draw the rectangle
     rectangle(left, top, right, bottom);
 
     // Get user input
@@ -27,36 +59,40 @@ void displayInputInRectangle(int i,const std::string userInput) {
     // Calculate text position to center it inside the rectangle
 //    int textWidth = textwidth(userInput.c_str());
 //    int textHeight = textheight(userInput.c_str());
-    int x = left + (right - left ) / 2;
+    //int x = left + (right - left ) / 2;
+    int x=left+20;
     int y = top + (bottom - top ) / 2;
 
     // Display the user input inside the rectangle
     settextstyle(DEFAULT_FONT, HORIZ_DIR, 1);
-    outtextxy(x, y, const_cast<char*>(userInput.c_str()));
+    outtextxy(x, y, const_cast<char*>(std::to_string(userInput).c_str()));
 
     // Wait for a key press before closing the graphics window
-    getch();
+    delay(700);
 
 }
+
 
 int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
-     std::string userInput;
-
-//    displayInputInRectangle(1,1);
-//    displayInputInRectangle(2,2);
+     int data;
+     char g;
 int x=110,i=0;
 // yaha loop ma 3 value rakhnu ko khas meaning kehi testo xaina hae
-while(i<3)
-{
-    std::cout << "Enter text to display inside the rectangle: ";
-    std::getline(std::cin, userInput);
-    displayInputInRectangle(x,userInput);
+do{
+    std::cout << "\nEnter text to display inside the rectangle: ";
+    cin>>data;
+    cout<<"111";
+    insertatend(data);
+    cout<<"\nrrr";
+    displayInputInRectangle(x,data);
     x=x+110;
-    i++;
-}
+    cout<<"\nEnter y to insert the data in the linked list again:";
+    g=getch();
+}while(g=='y'||g=='Y');
     closegraph();
+    delay(300);
     return 0;
 }
 /*
