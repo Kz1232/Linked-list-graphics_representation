@@ -51,15 +51,7 @@ line(c,100,c,150);
 // Draw the rectangle
     rectangle(left, top, right, bottom);
 
-    // Get user input
-//    std::string userInput;
-//    std::cout << "Enter text to display inside the rectangle: ";
-//    std::getline(std::cin, userInput);
-
-    // Calculate text position to center it inside the rectangle
-//    int textWidth = textwidth(userInput.c_str());
-//    int textHeight = textheight(userInput.c_str());
-    //int x = left + (right - left ) / 2;
+   
     int x=left+20;
     int y = top + (bottom - top ) / 2;
 
@@ -67,7 +59,7 @@ line(c,100,c,150);
     settextstyle(DEFAULT_FONT, HORIZ_DIR, 1);
     outtextxy(x, y, const_cast<char*>(std::to_string(userInput).c_str()));
 
-    // Wait for a key press before closing the graphics window
+    // delays your graph windows for 700ms
     delay(700);
 
 }
@@ -79,7 +71,7 @@ int main() {
      int data;
      char g;
 int x=110,i=0;
-// yaha loop ma 3 value rakhnu ko khas meaning kehi testo xaina hae
+
 do{
     std::cout << "\nEnter text to display inside the rectangle: ";
     cin>>data;
@@ -126,4 +118,4 @@ if you attempt to modify a value that was originally declared as `const`.
 In this case, you must ensure that the `outtextxy()` function doesn't modify
 the contents of the string, as the original `userInput` is still considered `const`.
 
-Next co-ordinate x must be=prev last x+30;8*/
+Next co-ordinate x must be=prev last x+30;8 */
